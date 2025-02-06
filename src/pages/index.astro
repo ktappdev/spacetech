@@ -1,11 +1,289 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products } from '../data/products';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<div class="floating-particles">
+		{Array.from({ length: 20 }).map((_, i) => (
+			<div class="particle" style={`--delay: ${i * 0.5}s; --size: ${Math.random() * 2 + 1}px`}></div>
+		))}
+	</div>
+
+	<header class="hero">
+		<div class="hero-content">
+			<h1>
+				<span class="gradient-text">SpaceTech</span>
+				<span class="subtitle">The Future of Space Commerce</span>
+			</h1>
+			<p class="hero-description">Premium Space Gear. Subscription Required. No Long-Term Commitment to the Galaxy.</p>
+			<div class="hero-cta">
+				<a href="#products" class="cta-button">
+					Explore Products
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="btn-icon">
+						<path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+					</svg>
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<section id="products" class="categories">
+		<div class="section-header">
+			<h2>Featured Products</h2>
+			<p class="section-description">Discover our cutting-edge space technology available for subscription</p>
+		</div>
+		<div class="products-grid">
+			{products.map(product => (
+				<ProductCard product={product} />
+			))}
+		</div>
+	</section>
+
+	<section class="why-subscribe">
+		<div class="section-header">
+			<h2>Why Subscribe?</h2>
+			<p class="section-description">Experience the benefits of our subscription-based space technology</p>
+		</div>
+		<div class="benefits">
+			<div class="benefit">
+				<div class="benefit-icon">🚀</div>
+				<h3>Latest Tech</h3>
+				<p>Always get access to the newest space technology upgrades and improvements</p>
+			</div>
+			<div class="benefit">
+				<div class="benefit-icon">🛡️</div>
+				<h3>Full Support</h3>
+				<p>24/7 intergalactic customer support for all subscribers across the universe</p>
+			</div>
+			<div class="benefit">
+				<div class="benefit-icon">💫</div>
+				<h3>Flexibility</h3>
+				<p>Cancel anytime - no long-term contracts required. Freedom to explore the cosmos</p>
+			</div>
+		</div>
+	</section>
 </Layout>
+
+<style>
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-20px);
+		}
+	}
+
+	@keyframes particle-float {
+		0% {
+			transform: translateY(0) rotate(0deg);
+		}
+		100% {
+			transform: translateY(-100vh) rotate(360deg);
+		}
+	}
+
+	.floating-particles {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: -1;
+	}
+
+	.particle {
+		position: absolute;
+		width: var(--size);
+		height: var(--size);
+		background: var(--accent);
+		border-radius: 50%;
+		animation: particle-float 20s linear infinite;
+		animation-delay: var(--delay);
+		opacity: 0.3;
+	}
+
+	.particle:nth-child(even) {
+		background: var(--accent-secondary);
+	}
+
+	.hero {
+		min-height: calc(100vh - 80px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 4rem 2rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.hero-content {
+		max-width: 800px;
+		animation: float 6s ease-in-out infinite;
+	}
+
+	.hero h1 {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	.gradient-text {
+		font-size: 4.5rem;
+		font-weight: 700;
+		background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		filter: drop-shadow(0 0 2rem rgba(0, 255, 136, 0.2));
+	}
+
+	.subtitle {
+		font-size: 2rem;
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	.hero-description {
+		font-size: 1.2rem;
+		color: rgba(255, 255, 255, 0.8);
+		margin-bottom: 3rem;
+		line-height: 1.6;
+	}
+
+	.hero-cta {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+	}
+
+	.cta-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 1rem 2rem;
+		background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+		color: rgba(0, 0, 0, 0.9);
+		text-decoration: none;
+		border-radius: 12px;
+		font-weight: 600;
+		font-size: 1.1rem;
+		transition: all 0.3s ease;
+	}
+
+	.cta-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+	}
+
+	.btn-icon {
+		width: 1.2rem;
+		height: 1.2rem;
+		transition: transform 0.3s ease;
+	}
+
+	.cta-button:hover .btn-icon {
+		transform: translateX(4px);
+	}
+
+	.section-header {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+
+	.section-header h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+		background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.section-description {
+		font-size: 1.2rem;
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.categories {
+		padding: 8rem 2rem;
+	}
+
+	.products-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		padding: 1rem;
+	}
+
+	.why-subscribe {
+		padding: 8rem 2rem;
+		background: rgba(255, 255, 255, 0.02);
+		position: relative;
+	}
+
+	.benefits {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.benefit {
+		text-align: center;
+		padding: 3rem 2rem;
+		background: rgba(255, 255, 255, 0.03);
+		border-radius: 24px;
+		transition: transform 0.3s ease;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.benefit:hover {
+		transform: translateY(-10px);
+		background: rgba(255, 255, 255, 0.05);
+	}
+
+	.benefit-icon {
+		font-size: 3rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.benefit h3 {
+		color: var(--accent);
+		margin-bottom: 1rem;
+		font-size: 1.5rem;
+	}
+
+	.benefit p {
+		color: rgba(255, 255, 255, 0.8);
+		line-height: 1.6;
+	}
+
+	@media (max-width: 768px) {
+		.gradient-text {
+			font-size: 3rem;
+		}
+
+		.subtitle {
+			font-size: 1.5rem;
+		}
+
+		.hero-description {
+			font-size: 1rem;
+		}
+
+		.categories, .why-subscribe {
+			padding: 4rem 1rem;
+		}
+
+		.section-header h2 {
+			font-size: 2rem;
+		}
+	}
+</style>

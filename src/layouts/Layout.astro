@@ -1,22 +1,256 @@
-<!doctype html>
+---
+interface Props {
+	title?: string;
+}
+
+const { title = 'GalactiSub - Premium Space Gear Subscriptions' } = Astro.props;
+---
+
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="description" content="Premium space gear subscriptions for the modern space explorer" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<div class="stars"></div>
+		<div class="twinkling"></div>
+		<nav>
+			<div class="nav-content">
+				<div class="logo">
+					<span class="logo-icon">🌌</span>
+					SpaceTech
+				</div>
+				<div class="nav-links">
+					<a href="/">Home</a>
+					<a href="/products">Products</a>
+					<a href="/about">About</a>
+					<a href="/contact">Contact</a>
+				</div>
+			</div>
+		</nav>
+		<main>
+			<slot />
+		</main>
+		<footer>
+			<div class="footer-content">
+				<div class="footer-logo">
+					<span class="logo-icon">🌌</span>
+					GalactiSub
+				</div>
+				<p class="footer-tagline">Powering the galaxy's subscription needs</p>
+				<div class="footer-links">
+					<a href="/privacy">Privacy Policy</a>
+					<a href="/terms">Terms of Service</a>
+					<a href="/support">Support</a>
+				</div>
+				<p class="copyright">© {new Date().getFullYear()} GalactiSub. All rights reserved across the galaxy.</p>
+			</div>
+		</footer>
 	</body>
 </html>
 
-<style>
-	html,
+<style is:global>
+	:root {
+		--accent: #00ff88;
+		--accent-secondary: #00ffee;
+		--background: #030014;
+		--text: #fff;
+		--card-bg: rgba(255, 255, 255, 0.05);
+		--nav-bg: rgba(3, 0, 20, 0.8);
+	}
+	
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		background: var(--background);
+		color: var(--text);
+		scroll-behavior: smooth;
+	}
+
 	body {
 		margin: 0;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		overflow-x: hidden;
+	}
+
+	@keyframes move-twinkle {
+		from {
+			transform: translateY(0);
+		}
+		to {
+			transform: translateY(-1000px);
+		}
+	}
+
+	.stars {
+		position: fixed;
+		top: 0;
+		left: 0;
 		width: 100%;
 		height: 100%;
+		background: transparent url('/stars.png') repeat;
+		z-index: -2;
+	}
+
+	.twinkling {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 200%;
+		background: transparent url('/twinkling.png') repeat;
+		z-index: -1;
+		animation: move-twinkle 200s linear infinite;
+	}
+
+	nav {
+		background: var(--nav-bg);
+		backdrop-filter: blur(20px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		position: sticky;
+		top: 0;
+		z-index: 100;
+	}
+
+	.nav-content {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.logo {
+		font-size: 1.5rem;
+		font-weight: 700;
+		background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.logo-icon {
+		font-size: 1.8rem;
+	}
+
+	.nav-links {
+		display: flex;
+		gap: 2rem;
+	}
+
+	.nav-links a {
+		color: var(--text);
+		text-decoration: none;
+		transition: all 0.3s ease;
+		font-weight: 500;
+		position: relative;
+		padding: 0.5rem 0;
+	}
+
+	.nav-links a::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+		transition: width 0.3s ease;
+	}
+
+	.nav-links a:hover::after {
+		width: 100%;
+	}
+
+	main {
+		flex: 1;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem 1rem;
+		width: 100%;
+		box-sizing: border-box;
+		position: relative;
+	}
+
+	footer {
+		background: var(--nav-bg);
+		backdrop-filter: blur(20px);
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		padding: 4rem 1rem;
+	}
+
+	.footer-content {
+		max-width: 1200px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.footer-logo {
+		font-size: 2rem;
+		font-weight: 700;
+		background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.footer-tagline {
+		color: rgba(255, 255, 255, 0.7);
+		margin-bottom: 2rem;
+	}
+
+	.footer-links {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.footer-links a {
+		color: var(--text);
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	.footer-links a:hover {
+		color: var(--accent);
+	}
+
+	.copyright {
+		color: rgba(255, 255, 255, 0.5);
+	}
+
+	@media (max-width: 768px) {
+		.nav-links {
+			gap: 1rem;
+		}
+
+		.footer-links {
+			flex-direction: column;
+			gap: 1rem;
+		}
 	}
 </style>
