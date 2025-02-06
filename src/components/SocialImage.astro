@@ -1,0 +1,101 @@
+import { Image } from 'astro:assets';
+
+<div class="social-image">
+    <div class="content">
+        <div class="logo">
+            <span class="logo-icon">🌌</span>
+            <span class="logo-text">SpaceTech</span>
+        </div>
+        <h1>Premium Space Gear Subscriptions</h1>
+        <p>Your Gateway to Galactic Innovation</p>
+    </div>
+    <div class="background">
+        <div class="stars"></div>
+        <div class="gradient-overlay"></div>
+    </div>
+</div>
+
+<style>
+    .social-image {
+        width: 1200px;
+        height: 630px;
+        background: var(--background);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, #1B2735 0%, #090A0F 100%);
+        opacity: 0.8;
+    }
+
+    .gradient-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 238, 0.2));
+        mix-blend-mode: overlay;
+    }
+
+    .content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 2rem;
+        background: rgba(3, 0, 20, 0.8);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        max-width: 800px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .logo-icon {
+        font-size: 4rem;
+    }
+
+    .logo-text {
+        font-size: 3.5rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #ffffff, #e0e0e0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    p {
+        font-size: 1.5rem;
+        color: var(--accent);
+    }
+</style> 
