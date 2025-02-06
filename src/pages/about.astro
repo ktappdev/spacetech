@@ -1,0 +1,307 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About Us - The Most Serious Space Company Ever*">
+    <div class="about-container">
+        <div class="about-header">
+            <h1>About Us<span class="asterisk">*</span></h1>
+            <p class="subtitle">Where space technology meets innovation</p>
+        </div>
+
+        <div class="about-section company-intro">
+            <h2>Our History, your future</h2>
+            <p>Founded in 4157 (or will be founded in 4157, depending on when you read this), SpaceTech began, or will begin when our CEO accidentally ordered 10,000 quantum flux capacitors instead of 10,000 paper clips. Rather than admit to this minor clerical error, we decided to pivot into the space subscription business.</p>
+        </div>
+
+        <div class="about-section mission">
+            <h2>Our Mission</h2>
+            <p>To boldly sell what no company has sold before. We're basically like Amazon, but for space stuff, and with a 99.9% lower chance of accidentally delivering your package to Alpha Centauri.</p>
+            
+            <div class="mission-stats">
+                <div class="stat">
+                    <span class="number">∞</span>
+                    <span class="label">Light Years of Experience**</span>
+                </div>
+                <div class="stat">
+                    <span class="number">42</span>
+                    <span class="label">Answer to Everything</span>
+                </div>
+                <div class="stat">
+                    <span class="number">3.14</span>
+                    <span class="label">Pies Eaten During Meetings</span>
+                </div>
+            </div>
+            <p class="footnote">**Time is relative in space, so this number is technically accurate somewhere</p>
+        </div>
+
+        <div class="about-section team">
+            <h2>Our "Expert" Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="avatar">👽</div>
+                    <h3>Zyx-427</h3>
+                    <p>Chief Alien Relations Officer</p>
+                    <p class="bio">"Technically not an alien, just from Cleveland."</p>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">🤖</div>
+                    <h3>Bot-3000</h3>
+                    <p>Head of Human Impersonation</p>
+                    <p class="bio">"HELLO FELLOW HUMANS. I AM DEFINITELY NOT A ROBOT."</p>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">🧙‍♂️</div>
+                    <h3>Dr. Stardust</h3>
+                    <p>Chief Quantum Mechanic</p>
+                    <p class="bio">"Once fixed a black hole with duct tape."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section testimonials">
+            <h2>Customer Testimonials</h2>
+            <div class="testimonial">
+                <p>"Their anti-gravity boots only failed twice this month! Best purchase ever!"</p>
+                <cite>- Definitely Not Our CEO's Mom</cite>
+            </div>
+            <div class="testimonial">
+                <p>"I accidentally teleported my cat to Mars using their products. 10/10 would teleport again."</p>
+                <cite>- A Very Real Customer</cite>
+            </div>
+            <div class="testimonial">
+                <p>"Their customer service is so good, they answered my support ticket before I even submitted it!"</p>
+                <cite>- Time Traveler from 2285</cite>
+            </div>
+        </div>
+
+        <div class="about-section legal">
+            <h2>Legal Stuff (The Boring Part)</h2>
+            <p>SpaceTech is not responsible for accidental teleportation, spontaneous molecular disassembly, temporal displacement, or sudden cravings for freeze-dried ice cream. All quantum warranties void if observed.</p>
+            <p class="small-print">By reading this text, you've already agreed to join our space colony on Mars. No takebacks.</p>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .about-container {
+        padding: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .about-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .about-header h1 {
+        font-size: 4rem;
+        background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        display: inline-block;
+    }
+
+    .asterisk {
+        position: absolute;
+        top: -0.5rem;
+        right: -1rem;
+        font-size: 2rem;
+        color: var(--accent);
+    }
+
+    .subtitle {
+        color: var(--accent);
+        font-size: 1.1rem;
+        font-style: italic;
+    }
+
+    .about-section {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 24px;
+        padding: 2rem;
+        margin-bottom: 3rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .about-section:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    h2 {
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+    }
+
+    .mission-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+        text-align: center;
+    }
+
+    .stat {
+        padding: 1.5rem;
+        background: rgba(0, 255, 136, 0.1);
+        border-radius: 16px;
+        transition: transform 0.3s ease;
+    }
+
+    .stat:hover {
+        transform: scale(1.05);
+    }
+
+    .number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--accent);
+        display: block;
+    }
+
+    .label {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footnote {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-style: italic;
+        margin-top: 1rem;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .team-member {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 16px;
+        transition: transform 0.3s ease;
+    }
+
+    .team-member:hover {
+        transform: translateY(-10px);
+    }
+
+    .avatar {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.3));
+    }
+
+    .team-member h3 {
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+    }
+
+    .bio {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: 1rem;
+    }
+
+    .testimonials {
+        text-align: center;
+    }
+
+    .testimonial {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 16px;
+        position: relative;
+    }
+
+    .testimonial:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .testimonial p {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    cite {
+        color: var(--accent);
+        font-style: italic;
+    }
+
+    .legal {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .small-print {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 1rem;
+        font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+        .about-container {
+            padding: 1rem;
+        }
+
+        .about-header h1 {
+            font-size: 3rem;
+        }
+
+        .about-section {
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        .mission-stats {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .team-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .team-member {
+            padding: 1.5rem;
+        }
+
+        .avatar {
+            font-size: 3rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .about-header h1 {
+            font-size: 2.5rem;
+        }
+
+        .about-section {
+            padding: 1.25rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .number {
+            font-size: 2.5rem;
+        }
+    }
+</style> 

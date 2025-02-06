@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
+import Hero from '../components/Hero.astro';
 import { products } from '../data/products';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -8,29 +9,7 @@ import { products } from '../data/products';
 ---
 
 <Layout>
-	<div class="floating-particles">
-		{Array.from({ length: 20 }).map((_, i) => (
-			<div class="particle" style={`--delay: ${i * 0.5}s; --size: ${Math.random() * 2 + 1}px`}></div>
-		))}
-	</div>
-
-	<header class="hero">
-		<div class="hero-content">
-			<h1>
-				<span class="gradient-text">SpaceTech</span>
-				<span class="subtitle">The Future of Space Commerce</span>
-			</h1>
-			<p class="hero-description">Premium Space Gear. Subscription Required. No Long-Term Commitment to the Galaxy.</p>
-			<div class="hero-cta">
-				<a href="#products" class="cta-button">
-					Explore Products
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="btn-icon">
-						<path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
-					</svg>
-				</a>
-			</div>
-		</div>
-	</header>
+	<Hero />
 
 	<section id="products" class="categories">
 		<div class="section-header">
@@ -70,131 +49,10 @@ import { products } from '../data/products';
 </Layout>
 
 <style>
-	@keyframes float {
-		0%, 100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-20px);
-		}
-	}
-
-	@keyframes particle-float {
-		0% {
-			transform: translateY(0) rotate(0deg);
-		}
-		100% {
-			transform: translateY(-100vh) rotate(360deg);
-		}
-	}
-
-	.floating-particles {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-		z-index: -1;
-	}
-
-	.particle {
-		position: absolute;
-		width: var(--size);
-		height: var(--size);
-		background: var(--accent);
-		border-radius: 50%;
-		animation: particle-float 20s linear infinite;
-		animation-delay: var(--delay);
-		opacity: 0.3;
-	}
-
-	.particle:nth-child(even) {
-		background: var(--accent-secondary);
-	}
-
-	.hero {
-		min-height: calc(100vh - 80px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		padding: 4rem 2rem;
-		position: relative;
-		overflow: hidden;
-	}
-
-	.hero-content {
-		max-width: 800px;
-		animation: float 6s ease-in-out infinite;
-	}
-
-	.hero h1 {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		margin-bottom: 2rem;
-	}
-
-	.gradient-text {
-		font-size: 4.5rem;
-		font-weight: 700;
-		background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		filter: drop-shadow(0 0 2rem rgba(0, 255, 136, 0.2));
-	}
-
-	.subtitle {
-		font-size: 2rem;
-		color: rgba(255, 255, 255, 0.9);
-	}
-
-	.hero-description {
-		font-size: 1.2rem;
-		color: rgba(255, 255, 255, 0.8);
-		margin-bottom: 3rem;
-		line-height: 1.6;
-	}
-
-	.hero-cta {
-		display: flex;
-		justify-content: center;
-		gap: 2rem;
-	}
-
-	.cta-button {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 1rem 2rem;
-		background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
-		color: rgba(0, 0, 0, 0.9);
-		text-decoration: none;
-		border-radius: 12px;
-		font-weight: 600;
-		font-size: 1.1rem;
-		transition: all 0.3s ease;
-	}
-
-	.cta-button:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
-	}
-
-	.btn-icon {
-		width: 1.2rem;
-		height: 1.2rem;
-		transition: transform 0.3s ease;
-	}
-
-	.cta-button:hover .btn-icon {
-		transform: translateX(4px);
-	}
-
 	.section-header {
 		text-align: center;
 		margin-bottom: 4rem;
+		padding: 0 1rem;
 	}
 
 	.section-header h2 {
@@ -208,6 +66,8 @@ import { products } from '../data/products';
 	.section-description {
 		font-size: 1.2rem;
 		color: rgba(255, 255, 255, 0.8);
+		max-width: 600px;
+		margin: 0 auto;
 	}
 
 	.categories {
@@ -216,8 +76,10 @@ import { products } from '../data/products';
 
 	.products-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 		gap: 2rem;
+		max-width: 1400px;
+		margin: 0 auto;
 		padding: 1rem;
 	}
 
@@ -229,10 +91,11 @@ import { products } from '../data/products';
 
 	.benefits {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 		gap: 2rem;
 		max-width: 1200px;
 		margin: 0 auto;
+		padding: 0 1rem;
 	}
 
 	.benefit {
@@ -266,24 +129,70 @@ import { products } from '../data/products';
 	}
 
 	@media (max-width: 768px) {
-		.gradient-text {
-			font-size: 3rem;
-		}
-
-		.subtitle {
-			font-size: 1.5rem;
-		}
-
-		.hero-description {
-			font-size: 1rem;
-		}
-
 		.categories, .why-subscribe {
 			padding: 4rem 1rem;
 		}
 
+		.section-header {
+			margin-bottom: 2.5rem;
+		}
+
 		.section-header h2 {
 			font-size: 2rem;
+		}
+
+		.section-description {
+			font-size: 1rem;
+		}
+
+		.products-grid {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			padding: 0.5rem;
+		}
+
+		.benefit {
+			padding: 2rem 1.5rem;
+		}
+
+		.benefit-icon {
+			font-size: 2.5rem;
+			margin-bottom: 1rem;
+		}
+
+		.benefit h3 {
+			font-size: 1.3rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.categories, .why-subscribe {
+			padding: 3rem 1rem;
+		}
+
+		.section-header {
+			margin-bottom: 2rem;
+		}
+
+		.section-header h2 {
+			font-size: 1.75rem;
+		}
+
+		.products-grid {
+			gap: 1rem;
+			padding: 0.25rem;
+		}
+
+		.benefit {
+			padding: 1.5rem 1rem;
+		}
+
+		.benefit-icon {
+			font-size: 2rem;
+		}
+
+		.benefit h3 {
+			font-size: 1.2rem;
 		}
 	}
 </style>

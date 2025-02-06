@@ -24,15 +24,12 @@ const { title = 'GalactiSub - Premium Space Gear Subscriptions' } = Astro.props;
 		<div class="twinkling"></div>
 		<nav>
 			<div class="nav-content">
-				<div class="logo">
+				<a href="/" class="logo">
 					<span class="logo-icon">🌌</span>
 					SpaceTech
-				</div>
+				</a>
 				<div class="nav-links">
-					<a href="/">Home</a>
-					<a href="/products">Products</a>
 					<a href="/about">About</a>
-					<a href="/contact">Contact</a>
 				</div>
 			</div>
 		</nav>
@@ -43,7 +40,7 @@ const { title = 'GalactiSub - Premium Space Gear Subscriptions' } = Astro.props;
 			<div class="footer-content">
 				<div class="footer-logo">
 					<span class="logo-icon">🌌</span>
-					GalactiSub
+					SpaceTech
 				</div>
 				<p class="footer-tagline">Powering the galaxy's subscription needs</p>
 				<div class="footer-links">
@@ -51,7 +48,7 @@ const { title = 'GalactiSub - Premium Space Gear Subscriptions' } = Astro.props;
 					<a href="/terms">Terms of Service</a>
 					<a href="/support">Support</a>
 				</div>
-				<p class="copyright">© {new Date().getFullYear()} GalactiSub. All rights reserved across the galaxy.</p>
+				<p class="copyright">© {new Date().getFullYear()} SpaceTech. All rights reserved across the galaxy.</p>
 			</div>
 		</footer>
 	</body>
@@ -146,6 +143,12 @@ const { title = 'GalactiSub - Premium Space Gear Subscriptions' } = Astro.props;
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
+		text-decoration: none;
+		transition: transform 0.3s ease;
+	}
+
+	.logo:hover {
+		transform: scale(1.05);
 	}
 
 	.logo-icon {
