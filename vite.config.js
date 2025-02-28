@@ -1,11 +1,11 @@
 // vite.config.js
 export default {
-  preview: {
-    allowedHosts: true
-  },
   server: {
     port: 3001,
     host: true,
-    allowedHosts: true
+    allowedHosts: ['spacetech.lyricut.com']
+  },
+  preview: {
+    allowedHosts: ['spacetech.lyricut.com']
   }
 }
