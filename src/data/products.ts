@@ -4,10 +4,11 @@ export const products: Product[] = [
     {
         id: 'quantum-laser-x1000',
         name: 'QuantumLaser X1000',
+        url: "https://vaultgy.com/embed/yhos557k2hkpdq3?primaryColor=%23FF5500&size=large&theme=dark",
         description: 'The most advanced space laser in the galaxy. Subscription required for quantum core activation. No subscription = No pew pew!',
         monthlyPrice: 299.99,
         yearlyPrice: 2999.99,
-        imageUrl: '/images/quantum-laser.webp',
+        imageUrl: '/images/quantum_lazer.jpg',
         features: [
             'Quantum-powered precision targeting',
             'Auto-cooling system',

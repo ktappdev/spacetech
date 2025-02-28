@@ -1,11 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ProductCard from '../components/ProductCard.astro';
-import Hero from '../components/Hero.astro';
-import { products } from '../data/products';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import ProductCard from "../components/ProductCard.astro";
+import Hero from "../components/Hero.astro";
+import { products } from "../data/products";
 ---
 
 <Layout>
@@ -14,35 +11,46 @@ import { products } from '../data/products';
 	<section id="products" class="categories">
 		<div class="section-header">
 			<h2>Featured Products</h2>
-			<p class="section-description">Discover our cutting-edge space technology available for subscription</p>
+			<p class="section-description">
+				Discover our cutting-edge space technology available for subscription
+			</p>
 		</div>
 		<div class="products-grid">
-			{products.map(product => (
-				<ProductCard product={product} />
-			))}
+			{products.map((product) => <ProductCard product={product} />)}
 		</div>
 	</section>
 
 	<section class="why-subscribe">
 		<div class="section-header">
 			<h2>Why Subscribe?</h2>
-			<p class="section-description">Experience the benefits of our subscription-based space technology</p>
+			<p class="section-description">
+				Experience the benefits of our subscription-based space technology
+			</p>
 		</div>
 		<div class="benefits">
 			<div class="benefit">
 				<div class="benefit-icon">🚀</div>
 				<h3>Latest Tech</h3>
-				<p>Always get access to the newest space technology upgrades and improvements</p>
+				<p>
+					Always get access to the newest space technology upgrades and
+					improvements
+				</p>
 			</div>
 			<div class="benefit">
 				<div class="benefit-icon">🛡️</div>
 				<h3>Full Support</h3>
-				<p>24/7 intergalactic customer support for all subscribers across the universe</p>
+				<p>
+					24/7 intergalactic customer support for all subscribers across the
+					universe
+				</p>
 			</div>
 			<div class="benefit">
 				<div class="benefit-icon">💫</div>
 				<h3>Flexibility</h3>
-				<p>Cancel anytime - no long-term contracts required. Freedom to explore the cosmos</p>
+				<p>
+					Cancel anytime - no long-term contracts required. Freedom to explore
+					the cosmos
+				</p>
 			</div>
 		</div>
 	</section>
@@ -129,7 +137,8 @@ import { products } from '../data/products';
 	}
 
 	@media (max-width: 768px) {
-		.categories, .why-subscribe {
+		.categories,
+		.why-subscribe {
 			padding: 4rem 1rem;
 		}
 
@@ -166,7 +175,8 @@ import { products } from '../data/products';
 	}
 
 	@media (max-width: 480px) {
-		.categories, .why-subscribe {
+		.categories,
+		.why-subscribe {
 			padding: 3rem 1rem;
 		}
 
