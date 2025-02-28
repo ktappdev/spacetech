@@ -4,13 +4,7 @@ export default {
     port: 3001,
     host: '0.0.0.0',
     strictPort: true,
-    cors: {
-      origin: [
-        'http://localhost:3001',
-        'http://spacetech.lyricut.com',
-        'https://spacetech.lyricut.com'
-      ]
-    },
+    cors: true, // Allow all origins in development
     hmr: {
       clientPort: 3001,
       host: 'spacetech.lyricut.com'
@@ -19,12 +13,19 @@ export default {
       usePolling: true,
       interval: 1000
     },
-    allowedHosts: ['spacetech.lyricut.com', '.lyricut.com']
+    allowedHosts: ['spacetech.lyricut.com', '.lyricut.com', 'localhost']
   },
   preview: {
     port: 3001,
     host: '0.0.0.0',
     strictPort: true,
-    allowedHosts: ['spacetech.lyricut.com', '.lyricut.com']
+    cors: true, // Allow all origins in preview
+    allowedHosts: ['spacetech.lyricut.com', '.lyricut.com', 'localhost']
+  },
+  build: {
+    // Ensure static files are properly handled
+    assetsDir: 'assets',
+    emptyOutDir: true,
+    sourcemap: true
   }
 }
