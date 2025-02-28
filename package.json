@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "deploy": "git pull && pnpm install && pnpm run build && pm2 start ecosystem.config.cjs",
     "dev": "astro dev --allowed-hosts=spacetech.lyricut.com",
     "build": "astro build",
     "preview": "astro preview --allowed-hosts=spacetech.lyricut.com",
