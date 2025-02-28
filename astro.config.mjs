@@ -6,11 +6,24 @@ export default defineConfig({
   // Server configuration
   server: {
     port: 3001,
-    host: true
+    host: '0.0.0.0'
   },
   vite: {
+    server: {
+      watch: {
+        usePolling: true
+      },
+      hmr: {
+        clientPort: 3001
+      },
+      host: '0.0.0.0',
+      strictPort: true
+    },
     preview: {
-      allowedHosts: ['spacetech.lyricut.com']
+      port: 3001,
+      host: '0.0.0.0',
+      strictPort: true,
+      allowedHosts: ['spacetech.lyricut.com', 'localhost']
     }
   },
 });
