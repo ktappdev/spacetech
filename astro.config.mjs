@@ -8,4 +8,9 @@ export default defineConfig({
     port: 3001,
     host: true
   },
+  vite: {
+    preview: {
+      allowedHosts: ['spacetech.lyricut.com']
+    }
+  },
 });
