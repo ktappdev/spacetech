@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaultgy Product Embed Example</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3 {
+            color: #2563eb;
+        }
+        
+        .example-container {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        
+        .code-block {
+            background-color: #f9fafb;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid #e5e7eb;
+        }
+        
+        code {
+            font-family: monospace;
+            font-size: 14px;
+        }
+        
+        .customization-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .option-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .option-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        button:hover {
+            background-color: #1d4ed8;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vaultgy Product Embed Examples</h1>
+    
+    <p>This page demonstrates different ways to embed Vaultgy products in your website.</p>
+    
+    <h2>Option 1: Simple Embed (Script Tag)</h2>
+    
+    <div class="example-container">
+        <div class="code-block">
+            <code>
+&lt;script src="https://embed.vaultgy.com/v1/embed.js" 
+        data-merchant-id="YOUR_MERCHANT_ID" 
+        data-product-id="PRODUCT_ID"&gt;
+&lt;/script&gt;
+            </code>
+        </div>
+        
+        <h3>Live Example</h3>
+        
+        <!-- Replace with actual merchant and product IDs for testing -->
+        <script src="https://vaultgy.com/v1/embed.js" 
+                data-merchant-id="YOUR_MERCHANT_ID" 
+                data-product-id="PRODUCT_ID">
+        </script>
+    </div>
+    
+    <h2>Option 2: Customized Embed</h2>
+    
+    <div class="example-container">
+        <h3>Customization Options</h3>
+        
+        <div class="customization-options">
+            <div class="option-group">
+                <label class="option-label">Theme</label>
+                <select id="theme-select">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label class="option-label">Primary Color</label>
+                <input type="color" id="primary-color" value="#2563eb">
+            </div>
+            
+            <div class="option-group">
+                <label class="option-label">Secondary Color</label>
+                <input type="color" id="secondary-color" value="#1d4ed8">
+            </div>
+            
+            <div class="option-group">
+                <label class="option-label">Size</label>
+                <select id="size-select">
+                    <option value="small">Small</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label class="option-label">Button Text</label>
+                <input type="text" id="button-text" value="Get Started">
+            </div>
+        </div>
+        
+        <div class="code-block">
+            <code id="custom-embed-code">
+&lt;script src="https://embed.vaultgy.com/v1/embed.js" 
+        data-merchant-id="YOUR_MERCHANT_ID" 
+        data-product-id="PRODUCT_ID"
+        data-theme="light"
+        data-primary-color="#2563eb"
+        data-secondary-color="#1d4ed8"
+        data-size="medium"
+        data-button-text="Get Started"&gt;
+&lt;/script&gt;
+            </code>
+        </div>
+        
+        <button id="update-preview">Update Preview</button>
+        
+        <h3>Live Preview</h3>
+        <div id="custom-embed-container">
+            <!-- The custom embed will be inserted here by JavaScript -->
+        </div>
+    </div>
+    
+    <h2>Option 3: Direct Link</h2>
+    
+    <div class="example-container">
+        <div class="code-block">
+            <code>
+&lt;a href="https://vaultgy.com/checkout/PRODUCT_ID?merchantId=YOUR_MERCHANT_ID&amp;redirect_url=https://yoursite.com/success" 
+   class="your-button-styles"&gt;
+  Subscribe Now
+&lt;/a&gt;
+            </code>
+        </div>
+        
+        <h3>Live Example</h3>
+        
+        <!-- Replace with actual merchant and product IDs for testing -->
+        <a href="https://vaultgy.com/checkout/PRODUCT_ID?merchantId=YOUR_MERCHANT_ID&redirect_url=https://example.com/success" 
+           style="display: inline-block; background-color: #2563eb; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: 500;">
+          Subscribe Now
+        </a>
+    </div>
+    
+    <script>
+        // Function to update the custom embed code and preview
+        function updateCustomEmbed() {
+            const theme = document.getElementById('theme-select').value;
+            const primaryColor = document.getElementById('primary-color').value;
+            const secondaryColor = document.getElementById('secondary-color').value;
+            const size = document.getElementById('size-select').value;
+            const buttonText = document.getElementById('button-text').value;
+            
+            // Update code display
+            const codeElement = document.getElementById('custom-embed-code');
+            codeElement.textContent = `<script src="https://embed.vaultgy.com/v1/embed.js" 
+        data-merchant-id="YOUR_MERCHANT_ID" 
+        data-product-id="PRODUCT_ID"
+        data-theme="${theme}"
+        data-primary-color="${primaryColor}"
+        data-secondary-color="${secondaryColor}"
+        data-size="${size}"
+        data-button-text="${buttonText}">
+<\/script>`;
+            
+            // Update live preview
+            const container = document.getElementById('custom-embed-container');
+            container.innerHTML = '';
+            
+            // Create script element
+            const script = document.createElement('script');
+            script.src = 'https://vaultgy.com/v1/embed.js';
+            script.setAttribute('data-merchant-id', 'YOUR_MERCHANT_ID');
+            script.setAttribute('data-product-id', 'PRODUCT_ID');
+            script.setAttribute('data-theme', theme);
+            script.setAttribute('data-primary-color', primaryColor);
+            script.setAttribute('data-secondary-color', secondaryColor);
+            script.setAttribute('data-size', size);
+            script.setAttribute('data-button-text', buttonText);
+            
+            container.appendChild(script);
+        }
+        
+        // Set up event listeners
+        document.getElementById('update-preview').addEventListener('click', updateCustomEmbed);
+        
+        // Initialize with default values
+        document.addEventListener('DOMContentLoaded', updateCustomEmbed);
+    </script>
+</body>
+</html>
