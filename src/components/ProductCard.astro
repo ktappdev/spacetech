@@ -1,5 +1,6 @@
 ---
-import type { Product } from '../types/products';
+import type { Product } from "../types/products";
+import VaultgyEmbed from "./VaultgyEmbed.astro";
 
 interface Props {
     product: Product;
@@ -17,35 +18,71 @@ const { product } = Astro.props;
         </div>
         <div class="content">
             <h2 class="product-title" title={product.name}>{product.name}</h2>
-            <p class="description" title={product.description}>{product.description}</p>
-            
+            <p class="description" title={product.description}>
+                {product.description}
+            </p>
+
             <div class="pricing">
                 <div class="price-option">
                     <div class="price-header">
                         <span class="price-badge">Monthly Subscription</span>
                     </div>
-                    <p class="price">${product.monthlyPrice}<span>/month</span></p>
+                    <p class="price">
+                        ${product.monthlyPrice}<span>/month</span>
+                    </p>
                 </div>
             </div>
-            
+
             <div class="features">
                 <h3>Features:</h3>
                 <ul>
-                    {product.features.map(feature => (
-                        <li title={feature}>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="feature-icon">
-                                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="feature-text">{feature}</span>
-                        </li>
-                    ))}
+                    {
+                        product.features.map((feature) => (
+                            <li title={feature}>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    class="feature-icon"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                                <span class="feature-text">{feature}</span>
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
-            
+
+            {
+                product.id === "quantum-laser-x1000" && (
+                    <div class="vaultgy-embed-container">
+                        <VaultgyEmbed
+                            merchantId="8sipki5dvkz51n4"
+                            productId="yhos557k2hkpdq3"
+                            buttonText="Subscribe Now"
+                            primaryColor="#00FF88"
+                        />
+                    </div>
+                )
+            }
+
             <a href={product.url} class="subscribe-btn">
                 Subscribe Now
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="btn-icon">
-                    <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="btn-icon"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
+                        clip-rule="evenodd"></path>
                 </svg>
             </a>
         </div>
@@ -56,7 +93,11 @@ const { product } = Astro.props;
     .product-card {
         position: relative;
         padding: 1px;
-        background: linear-gradient(45deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 238, 0.2));
+        background: linear-gradient(
+            45deg,
+            rgba(0, 255, 136, 0.2),
+            rgba(0, 255, 238, 0.2)
+        );
         border-radius: 24px;
         transition: all 0.3s ease;
         height: 100%;
@@ -66,7 +107,11 @@ const { product } = Astro.props;
 
     .product-card:hover {
         transform: translateY(-10px);
-        background: linear-gradient(45deg, rgba(0, 255, 136, 0.4), rgba(0, 255, 238, 0.4));
+        background: linear-gradient(
+            45deg,
+            rgba(0, 255, 136, 0.4),
+            rgba(0, 255, 238, 0.4)
+        );
     }
 
     .card-content {
@@ -131,7 +176,11 @@ const { product } = Astro.props;
     .product-title {
         font-size: 1.5rem;
         line-height: 1.2;
-        background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+        background: linear-gradient(
+            45deg,
+            var(--accent),
+            var(--accent-secondary)
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         white-space: nowrap;
@@ -239,7 +288,11 @@ const { product } = Astro.props;
     .subscribe-btn {
         width: 100%;
         padding: 0.9rem;
-        background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+        background: linear-gradient(
+            45deg,
+            var(--accent),
+            var(--accent-secondary)
+        );
         border: none;
         border-radius: 12px;
         color: rgba(0, 0, 0, 0.9);
@@ -268,6 +321,14 @@ const { product } = Astro.props;
 
     .subscribe-btn:hover .btn-icon {
         transform: translateX(4px);
+    }
+
+    .vaultgy-embed-container {
+        width: 100%;
+        margin-top: auto;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 1rem;
     }
 
     @media (max-width: 768px) {
@@ -368,4 +429,4 @@ const { product } = Astro.props;
             font-size: 0.9rem;
         }
     }
-</style> 
+</style>

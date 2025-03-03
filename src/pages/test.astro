@@ -1,0 +1,274 @@
+---
+import Layout from "../layouts/Layout.astro";
+import VaultgyEmbed from "../components/VaultgyEmbed.astro";
+---
+
+<Layout
+    title="Vaultgy Embed Test Page"
+    description="Examples of different Vaultgy embedding methods"
+>
+    <div class="container">
+        <h1>Vaultgy Embedding Methods</h1>
+        <p class="intro">
+            This page demonstrates different ways to embed Vaultgy products on
+            your website.
+        </p>
+
+        <section class="embed-section">
+            <h2>Method 1: Direct Link</h2>
+            <p>
+                The simplest way to integrate Vaultgy is with a direct link to
+                the checkout page.
+            </p>
+
+            <div class="example-container">
+                <div class="code-block">
+                    <pre><code>&lt;a href="https://vaultgy.com/checkout/yhos557k2hkpdq3?merchantId=8sipki5dvkz51n4&redirect_url=https://yoursite.com/success" 
+   class="your-button-styles"&gt;
+  Subscribe Now
+&lt;/a&gt;</code></pre>
+                </div>
+
+                <div class="demo">
+                    <h3>Live Example:</h3>
+                    <a
+                        href="https://vaultgy.com/embed/yhos557k2hkpdq3?primaryColor=%23FF5500&size=large&theme=dark"
+                        class="demo-button"
+                    >
+                        Subscribe Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="embed-section">
+            <h2>Method 2: Script Embed (Basic)</h2>
+            <p>Embed the product directly using the Vaultgy script tag.</p>
+
+            <div class="example-container">
+                <div class="code-block">
+                    <pre><code>&lt;script src="https://vaultgy.com/v1/embed.js" 
+        data-merchant-id="8sipki5dvkz51n4" 
+        data-product-id="yhos557k2hkpdq3"&gt;
+&lt;/script&gt;</code></pre>
+                </div>
+
+                <div class="demo">
+                    <h3>Live Example:</h3>
+                    <div class="embed-demo-container">
+                        <script
+                            src="https://vaultgy.com/v1/embed.js"
+                            data-merchant-id="8sipki5dvkz51n4"
+                            data-product-id="yhos557k2hkpdq3"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="embed-section">
+            <h2>Method 3: Script Embed with Styling</h2>
+            <p>
+                Customize the appearance of your embed with additional
+                attributes.
+            </p>
+
+            <div class="example-container">
+                <div class="code-block">
+                    <pre><code>&lt;script src="https://vaultgy.com/v1/embed.js" 
+        data-merchant-id="8sipki5dvkz51n4" 
+        data-product-id="yhos557k2hkpdq3"
+        data-theme="dark"
+        data-primary-color="#00FF88"
+        data-size="large"
+        data-button-text="Get Access Now"&gt;
+&lt;/script&gt;</code></pre>
+                </div>
+
+                <div class="demo">
+                    <h3>Live Example:</h3>
+                    <div class="embed-demo-container">
+                        <script
+                            src="https://vaultgy.com/v1/embed.js"
+                            data-merchant-id="8sipki5dvkz51n4"
+                            data-product-id="yhos557k2hkpdq3"
+                            data-theme="dark"
+                            data-primary-color="#00FF88"
+                            data-size="large"
+                            data-button-text="Get Access Now"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="embed-section">
+            <h2>Method 4: Using Astro Component</h2>
+            <p>
+                For Astro projects, you can use the VaultgyEmbed component for
+                cleaner integration.
+            </p>
+
+            <div class="example-container">
+                <div class="code-block">
+                    <pre><code>---
+import VaultgyEmbed from "../components/VaultgyEmbed.astro";
+---
+
+&lt;VaultgyEmbed
+    merchantId="8sipki5dvkz51n4"
+    productId="yhos557k2hkpdq3"
+    theme="dark"
+    primaryColor="#3366FF"
+    size="medium"
+    buttonText="Subscribe Now"
+/&gt;</code></pre>
+                </div>
+
+                <div class="demo">
+                    <h3>Live Example:</h3>
+                    <div class="embed-demo-container">
+                        <VaultgyEmbed
+                            merchantId="8sipki5dvkz51n4"
+                            productId="yhos557k2hkpdq3"
+                            theme="dark"
+                            primaryColor="#3366FF"
+                            size="medium"
+                            buttonText="Subscribe Now"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</Layout>
+
+<style>
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+            45deg,
+            var(--accent),
+            var(--accent-secondary)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+    }
+
+    .intro {
+        text-align: center;
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 3rem;
+    }
+
+    .embed-section {
+        margin-bottom: 5rem;
+    }
+
+    .embed-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: var(--accent);
+    }
+
+    .embed-section p {
+        margin-bottom: 1.5rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .example-container {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .code-block {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin-bottom: 2rem;
+    }
+
+    .code-block pre {
+        margin: 0;
+    }
+
+    .code-block code {
+        font-family: monospace;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .demo {
+        padding: 1rem 0;
+    }
+
+    .demo h3 {
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .demo-button {
+        display: inline-block;
+        padding: 0.9rem 2rem;
+        background: linear-gradient(
+            45deg,
+            var(--accent),
+            var(--accent-secondary)
+        );
+        border-radius: 8px;
+        color: rgba(0, 0, 0, 0.9);
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .demo-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 255, 136, 0.2);
+    }
+
+    .embed-demo-container {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 3rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .embed-section h2 {
+            font-size: 1.5rem;
+        }
+
+        .example-container {
+            padding: 1.5rem;
+        }
+
+        .code-block {
+            padding: 1rem;
+        }
+
+        .code-block code {
+            font-size: 0.8rem;
+        }
+    }
+</style>

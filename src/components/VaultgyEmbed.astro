@@ -1,0 +1,40 @@
+---
+interface Props {
+    merchantId: string;
+    productId: string;
+    theme?: 'light' | 'dark';
+    primaryColor?: string;
+    size?: 'small' | 'medium' | 'large';
+    buttonText?: string;
+}
+
+const { 
+    merchantId, 
+    productId, 
+    theme = 'dark', 
+    primaryColor = '#FF5500', 
+    size = 'medium',
+    buttonText = 'Buy Now'
+} = Astro.props;
+---
+
+<div class="vaultgy-embed-container">
+    <script 
+        src="https://vaultgy.com/v1/embed.js" 
+        data-merchant-id={merchantId} 
+        data-product-id={productId}
+        data-theme={theme}
+        data-primary-color={primaryColor}
+        data-size={size}
+        data-button-text={buttonText}>
+    </script>
+</div>
+
+<style>
+    .vaultgy-embed-container {
+        width: 100%;
+        margin-top: auto;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+</style>
